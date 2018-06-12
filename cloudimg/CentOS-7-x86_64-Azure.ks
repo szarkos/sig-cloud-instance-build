@@ -51,7 +51,7 @@ bootloader --append="console=tty0" --location=mbr --timeout=1
 skipx
 
 # Power down the machine after install
-poweroff
+shutdown
 
 
 %packages
@@ -64,7 +64,6 @@ python-pyasn1
 parted
 WALinuxAgent
 hypervkvpd
-azure-repo-svc 
 -dracut-config-rescue
 %end
 
@@ -134,7 +133,6 @@ ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 
 # Disable NetworkManager handling of the SRIOV interfaces
 cat <<EOF > /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
-
 # Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
 # This interface is transparently bonded to the synthetic interface,
 # so NetworkManager should just ignore any SRIOV interfaces.
@@ -169,7 +167,7 @@ touch /var/log/boot.log
 mkdir -p /var/cache/yum
 /usr/sbin/fixfiles -R -a restore
 
-# Modify yum
+# Modify yum, clean cache
 echo "http_caching=packages" >> /etc/yum.conf
 yum clean all
 
