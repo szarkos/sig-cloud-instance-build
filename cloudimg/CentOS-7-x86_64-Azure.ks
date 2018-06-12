@@ -31,7 +31,7 @@ rootpw --plaintext "to_be_disabled"
 selinux --enforcing
 
 # System services
-services --disabled="kdump" --enabled="network,sshd,rsyslog,chronyd,waagent,dnsmasq,NetworkManager"
+services --disabled="kdump,abrtd" --enabled="network,sshd,rsyslog,chronyd,waagent,dnsmasq,NetworkManager"
 %addon com_redhat_kdump --disable
 %end
 
@@ -170,6 +170,5 @@ echo 'azure' > /etc/yum/vars/infra
 
 # Set tuned profile
 echo "virtual-guest" > /etc/tuned/active_profile
-
 
 %end
