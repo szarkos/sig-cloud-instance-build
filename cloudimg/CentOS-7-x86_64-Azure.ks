@@ -51,7 +51,7 @@ bootloader --append="console=tty0" --location=mbr --timeout=1
 skipx
 
 # Power down the machine after install
-shutdown
+poweroff
 
 
 %packages
