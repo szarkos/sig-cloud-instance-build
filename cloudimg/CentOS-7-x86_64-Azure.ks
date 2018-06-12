@@ -45,8 +45,7 @@ part /boot --fstype="xfs" --size=500
 part / --fstype="xfs" --size=1 --grow --asprimary
 
 # System bootloader configuration
-ignoredisk --only-use=vda
-bootloader --append="console=tty0" --location=mbr --timeout=1 --boot-drive=vda
+bootloader --append="console=tty0" --location=mbr --timeout=1
 
 # Don't configure X
 skipx
