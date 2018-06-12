@@ -41,8 +41,8 @@ timezone Etc/UTC --isUtc
 # Disk partitioning information
 zerombr
 clearpart --all --initlabel
-part /boot --fstype="xfs" --ondisk=vda --size=500
-part / --fstype="xfs" --ondisk=vda --size=1 --grow --asprimary
+part /boot --fstype="xfs" --size=500
+part / --fstype="xfs" --size=1 --grow --asprimary
 
 # System bootloader configuration
 ignoredisk --only-use=vda
