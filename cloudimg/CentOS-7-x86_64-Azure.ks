@@ -99,7 +99,8 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # Ensure Hyper-V drivers are built into initramfs
 echo -e "\nadd_drivers+=\"hv_vmbus hv_netvsc hv_storvsc\"" >> /etc/dracut.conf
-dracut -f -v
+kversion=$( rpm -q kernel | sed 's/kernel\-//' )
+dracut -v -f "/boot/initramfs-${kversion}.img" "$kversion"
 
 # Import CentOS public key
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
