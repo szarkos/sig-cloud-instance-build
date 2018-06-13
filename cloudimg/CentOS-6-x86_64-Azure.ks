@@ -129,6 +129,19 @@ HOSTNAME=localhost.localdomain
 EOF
 
 # Disable persistent net rules
+rm -f /etc/udev/rules.d/70* 2>/dev/null
+ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
+
+# Disable NetworkManager handling of the SRIOV interfaces
+cat <<EOF > /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules
+# Accelerated Networking on Azure exposes a new SRIOV interface to the VM.
+# This interface is transparently bonded to the synthetic interface,
+# so NetworkManager should just ignore any SRIOV interfaces.
+SUBSYSTEM=="net", DRIVERS=="hv_pci", ACTION=="add", ENV{NM_UNMANAGED}="1"
+
+EOF
+
+# Disable persistent net rules
 rm -f /etc/udev/rules.d/70-persistent-net.rules 2>/dev/null
 ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
