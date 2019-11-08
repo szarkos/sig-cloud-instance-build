@@ -25,10 +25,10 @@ network --hostname=localhost.localdomain
 firewall --enabled --service=ssh
 
 # Use network installation
-url --url="mirrorsnap.centos.org/DATESTAMP/centos/8/BaseOS/x86_64/os/"
-repo --name "BaseOS" --baseurl="http://mirrorsnap.centos.org/DATESTAMP/centos/8/BaseOS/x86_64/os/" --cost=100
-repo --name "AppStream" --baseurl="http://mirrorsnap.centos.org/DATESTAMP/centos/8/AppStream/x86_64/os/" --cost=100
-repo --name "extras" --baseurl="http://mirrorsnap.centos.org/DATESTAMP/centos/8/extras/x86_64/os/" --cost=100
+url --url="mirror.centos.org/centos/8/BaseOS/x86_64/os/"
+repo --name "BaseOS" --baseurl="http://mirror.centos.org/centos/8/BaseOS/x86_64/os/" --cost=100
+repo --name "AppStream" --baseurl="http://mirror.centos.org/centos/8/AppStream/x86_64/os/" --cost=100
+repo --name "extras" --baseurl="http://mirror.centos.org/centos/8/extras/x86_64/os/" --cost=100
 
 # Root password
 rootpw --iscrypted nothing
